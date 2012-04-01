@@ -1,0 +1,34 @@
+<webscript>
+	<shortname>Add Simple Workflow</shortname>
+	<description>Add a Simple Workflow to a Node
+	<![CDATA[
+	<p>Example JSON:</p>
+	<p><code>{
+    "simpleworkflow": {
+        "accept": {
+            "name": "acceptstep",
+            "move": true,
+            "folder": "workspace://SpacesStore/aed218e8-df44-4865-84cd-0105252f4993"
+        },
+        "reject": {
+            "name": "rejectstep",
+            "move": true,
+            "folder": "workspace://SpacesStore/aed218e8-df44-4865-84cd-0105252f4993"
+        }
+    }
+}</code></p>
+
+<p>The accept object is required, the reject object is optional</p>
+<p>Each object is made up of three fields:<p>
+<p>name: The name of this step as it should appear in the Alfresco UIs</p>
+<p>move: Should this step result in a move or a copy.  a value of true is a move, false means copy</p>
+<p>folder: The folder nodeRef where the document should moved or copied to</p>]]>
+	</description>
+	<url>/simpleworkflow/add/{store_type}/{store_id}/{id}</url>
+	<format default="json"/>
+	<authentication>user</authentication>
+	<transaction>requiresnew</transaction>
+	<family>Simple Workflow</family>
+	<cache>never</cache>
+	<lifecycle>public_api</lifecycle>
+</webscript>
