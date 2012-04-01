@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<project name="Alfresco AMP Build File" default="package-amp" basedir=".">
+	
+	<property file="amp-build.properties"/>
+
+	<property name="project.dir" value="."/>
+	<property name="build.dir" value="${project.dir}/build"/>
+	<property name="config.dir" value="${project.dir}/config"/>
+	<property name="amp.file" value="${build.dir}/dist/${amp.name}.amp"/>
+
+	<target name="mkdirs">
+		<mkdir dir="${build.dir}/dist" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" includeemptydirs="true" />
+	</target>
+
+	<target name="package-amp" depends="clean, mkdirs" description="Package the Module" >
+		<zip destfile="${amp.file}" >
+			<fileset dir="${project.dir}" includes="config/**/*.*" excludes="**/module.properties" />
+			<zipfileset dir="${project.dir}/templates"  prefix="config/alfresco/templates" />
+			<fileset dir="${project.dir}/config/" includes="module.properties" />
+		</zip>
+	</target>
+
+</project>
